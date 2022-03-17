@@ -137,6 +137,5 @@ func main() {
 	fmt.Println("Alamat    	: ", s10.alamat)
 	fmt.Println("Pekerjaan 	: ", s10.pekerjaan)
 	fmt.Println("Alasan memilih kelas golang : ", s10.keterangan)
-	fmt.Println()
 
 }
