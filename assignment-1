@@ -1,0 +1,142 @@
+package main
+
+import (
+	"fmt"
+	"os"
+)
+
+type data struct {
+	nama       string
+	alamat     string
+	pekerjaan  string
+	keterangan string
+}
+
+func main() {
+
+	var argsRaw = os.Args
+	fmt.Printf("-> %#v\n", argsRaw)
+
+	var s1 = data{}
+	s1.nama = "Ahmad Faris"
+	s1.alamat = "Jakarta"
+	s1.pekerjaan = "Mahasiswa"
+	s1.keterangan = "Mempelajari bahasa golang"
+
+	var s2 = data{}
+	s2.nama = "Rakha"
+	s2.alamat = "Jambi"
+	s2.pekerjaan = "Mahasiswa"
+	s2.keterangan = "Mempelajari bahasa golang"
+
+	var s3 = data{}
+	s3.nama = "I Gede Diva"
+	s3.alamat = "Bali"
+	s3.pekerjaan = "Mahasiswa"
+	s3.keterangan = "Mempelajari bahasa golang"
+
+	var s4 = data{}
+	s4.nama = "Muhammad Daffa"
+	s4.alamat = "Bogor"
+	s4.pekerjaan = "Mahasiswa"
+	s4.keterangan = "Mempelajari bahasa golang"
+
+	var s5 = data{}
+	s5.nama = "M Yoga"
+	s5.alamat = "Banten"
+	s5.pekerjaan = "Mahasiswa"
+	s5.keterangan = "Mempelajari bahasa golang"
+
+	var s6 = data{}
+	s6.nama = "Wafianda Azhar"
+	s6.alamat = "Padang"
+	s6.pekerjaan = "Mahasiswa"
+	s6.keterangan = "Mempelajari bahasa golang"
+
+	var s7 = data{}
+	s7.nama = "M Haiqal"
+	s7.alamat = "Bandung"
+	s7.pekerjaan = "Mahasiswa"
+	s7.keterangan = "Mempelajari bahasa golang"
+
+	var s8 = data{}
+	s8.nama = "Luqman"
+	s8.alamat = "Semarang"
+	s8.pekerjaan = "Mahasiswa"
+	s8.keterangan = "Mempelajari bahasa golang"
+
+	var s9 = data{}
+	s9.nama = "Ruben"
+	s9.alamat = "Lampung"
+	s9.pekerjaan = "Mahasiswa"
+	s9.keterangan = "Mempelajari bahasa golang"
+
+	var s10 = data{}
+	s10.nama = "Denada"
+	s10.alamat = "Medan"
+	s10.pekerjaan = "Mahasiswa"
+	s10.keterangan = "Mempelajari bahasa golang"
+
+	var args = argsRaw[1:]
+	fmt.Printf("-> %#v\n", args)
+	fmt.Println("Nama      	: ", s1.nama)
+	fmt.Println("Alamat    	: ", s1.alamat)
+	fmt.Println("Pekerjaan 	: ", s1.pekerjaan)
+	fmt.Println("Alasan memilih kelas golang : ", s1.keterangan)
+	fmt.Println()
+
+	fmt.Println("Nama      	: ", s2.nama)
+	fmt.Println("Alamat    	: ", s2.alamat)
+	fmt.Println("Pekerjaan 	: ", s2.pekerjaan)
+	fmt.Println("Alasan memilih kelas golang : ", s2.keterangan)
+	fmt.Println()
+
+	fmt.Println("Nama      	: ", s3.nama)
+	fmt.Println("Alamat    	: ", s3.alamat)
+	fmt.Println("Pekerjaan 	: ", s3.pekerjaan)
+	fmt.Println("Alasan memilih kelas golang : ", s3.keterangan)
+	fmt.Println()
+
+	fmt.Println("Nama      	: ", s4.nama)
+	fmt.Println("Alamat    	: ", s4.alamat)
+	fmt.Println("Pekerjaan 	: ", s4.pekerjaan)
+	fmt.Println("Alasan memilih kelas golang : ", s4.keterangan)
+	fmt.Println()
+
+	fmt.Println("Nama      	: ", s5.nama)
+	fmt.Println("Alamat    	: ", s5.alamat)
+	fmt.Println("Pekerjaan 	: ", s5.pekerjaan)
+	fmt.Println("Alasan memilih kelas golang : ", s5.keterangan)
+	fmt.Println()
+
+	fmt.Println("Nama      	: ", s6.nama)
+	fmt.Println("Alamat    	: ", s6.alamat)
+	fmt.Println("Pekerjaan 	: ", s6.pekerjaan)
+	fmt.Println("Alasan memilih kelas golang : ", s6.keterangan)
+	fmt.Println()
+
+	fmt.Println("Nama      	: ", s7.nama)
+	fmt.Println("Alamat    	: ", s7.alamat)
+	fmt.Println("Pekerjaan 	: ", s7.pekerjaan)
+	fmt.Println("Alasan memilih kelas golang : ", s7.keterangan)
+	fmt.Println()
+
+	fmt.Println("Nama      	: ", s8.nama)
+	fmt.Println("Alamat    	: ", s8.alamat)
+	fmt.Println("Pekerjaan 	: ", s8.pekerjaan)
+	fmt.Println("Alasan memilih kelas golang : ", s8.keterangan)
+	fmt.Println()
+
+	fmt.Println("Nama      	: ", s9.nama)
+	fmt.Println("Alamat    	: ", s9.alamat)
+	fmt.Println("Pekerjaan 	: ", s9.pekerjaan)
+	fmt.Println("Alasan memilih kelas golang : ", s9.keterangan)
+	fmt.Println()
+
+	fmt.Println("Nama      	: ", s10.nama)
+	fmt.Println("Alamat    	: ", s10.alamat)
+	fmt.Println("Pekerjaan 	: ", s10.pekerjaan)
+	fmt.Println("Alasan memilih kelas golang : ", s10.keterangan)
+	fmt.Println()
+
+}
