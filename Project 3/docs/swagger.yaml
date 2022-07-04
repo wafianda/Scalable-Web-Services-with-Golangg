@@ -1,0 +1,461 @@
+definitions:
+  controllers.BoardBody:
+    properties:
+      end_date:
+        type: string
+      name:
+        type: string
+      start_date:
+        type: string
+    required:
+    - end_date
+    - name
+    - start_date
+    type: object
+  models.Board:
+    properties:
+      end_date:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      start_date:
+        type: string
+    type: object
+  models.Column:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      order:
+        type: integer
+    type: object
+  models.Ticket:
+    properties:
+      board:
+        $ref: '#/definitions/models.Board'
+      board_id:
+        type: integer
+      description:
+        type: string
+      dropzone_id:
+        type: integer
+      id:
+        type: integer
+      title:
+        type: string
+    type: object
+  serializers.ColumnBody:
+    properties:
+      name:
+        maxLength: 255
+        minLength: 3
+        type: string
+      order:
+        type: integer
+    required:
+    - name
+    - order
+    type: object
+  serializers.TicketBody:
+    properties:
+      board_id:
+        type: integer
+      description:
+        type: string
+      dropzone_id:
+        type: integer
+      title:
+        type: string
+    required:
+    - board_id
+    - dropzone_id
+    - title
+    type: object
+info:
+  contact: {}
+paths:
+  /boards:
+    get:
+      consumes:
+      - application/json
+      description: Returns all boards
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              items:
+                $ref: '#/definitions/models.Board'
+              type: array
+            type: array
+        "404":
+          description: Not Found
+          schema:
+            type: string
+      summary: get all boards
+      tags:
+      - GetBoards
+    post:
+      consumes:
+      - application/json
+      description: Create a new Board
+      parameters:
+      - description: Board
+        in: body
+        name: Board
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.BoardBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Board'
+        "404":
+          description: Not Found
+          schema:
+            type: string
+      summary: Create a new Board
+      tags:
+      - CreateBoard
+  /boards/:id:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a board by id
+      parameters:
+      - description: Board ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+      summary: Delete a board by id
+      tags:
+      - DeleteBoard
+    get:
+      consumes:
+      - application/json
+      description: Return a Board by id
+      parameters:
+      - description: Board ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Board'
+        "404":
+          description: Not Found
+          schema:
+            type: string
+      summary: Return a Board by id
+      tags:
+      - GetBoard
+    put:
+      consumes:
+      - application/json
+      description: Update a board
+      parameters:
+      - description: Board ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Board
+        in: body
+        name: board
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.BoardBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Board'
+        "404":
+          description: Not Found
+          schema:
+            type: string
+      summary: Update a board
+      tags:
+      - UpdateBoard
+  /columns:
+    get:
+      consumes:
+      - application/json
+      description: Returns all columns
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              items:
+                $ref: '#/definitions/models.Column'
+              type: array
+            type: array
+        "404":
+          description: Not Found
+          schema:
+            type: string
+      summary: Get all columns
+      tags:
+      - GetColumns
+    post:
+      consumes:
+      - application/json
+      description: Create a new column
+      parameters:
+      - description: Column
+        in: body
+        name: column
+        required: true
+        schema:
+          $ref: '#/definitions/serializers.ColumnBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Column'
+        "404":
+          description: Not Found
+          schema:
+            type: string
+      summary: Create a new column
+      tags:
+      - CreateColumn
+  /columns/:id:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a column by id
+      parameters:
+      - description: Column ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+      summary: Delete column by id
+      tags:
+      - DeleteColumn
+    get:
+      consumes:
+      - application/json
+      description: Returns a column by id
+      parameters:
+      - description: Column ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Column'
+        "404":
+          description: Not Found
+          schema:
+            type: string
+      summary: Get a column by id
+      tags:
+      - GetColumn
+    put:
+      consumes:
+      - application/json
+      description: Update a column
+      parameters:
+      - description: Column ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Column
+        in: body
+        name: column
+        required: true
+        schema:
+          $ref: '#/definitions/serializers.ColumnBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Column'
+        "404":
+          description: Not Found
+          schema:
+            type: string
+      summary: Update a column
+      tags:
+      - UpdateColumn
+  /tickets:
+    get:
+      consumes:
+      - application/json
+      description: Returns all tickets
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              items:
+                $ref: '#/definitions/models.Ticket'
+              type: array
+            type: array
+        "404":
+          description: Not Found
+          schema:
+            type: string
+      summary: Get all tickets
+      tags:
+      - Tickets list
+    post:
+      consumes:
+      - application/json
+      description: Create a new ticket
+      parameters:
+      - description: Ticket
+        in: body
+        name: ticket
+        required: true
+        schema:
+          $ref: '#/definitions/serializers.TicketBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Ticket'
+        "404":
+          description: Not Found
+          schema:
+            type: string
+      summary: Create a new ticket
+      tags:
+      - Create Ticket
+  /tickets/:id:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a ticket by id
+      parameters:
+      - description: Ticket ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+      summary: Delete ticket by id
+      tags:
+      - Delete Ticket
+    get:
+      consumes:
+      - application/json
+      description: Returns a ticket by id
+      parameters:
+      - description: Ticket ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Ticket'
+        "404":
+          description: Not Found
+          schema:
+            type: string
+      summary: Get a ticket by id
+      tags:
+      - Get Ticket
+    put:
+      consumes:
+      - application/json
+      description: Update a ticket
+      parameters:
+      - description: Ticket ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Ticket
+        in: body
+        name: ticket
+        required: true
+        schema:
+          $ref: '#/definitions/serializers.TicketBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Ticket'
+        "404":
+          description: Not Found
+          schema:
+            type: string
+      summary: Update a ticket
+      tags:
+      - Update Ticket
+swagger: "2.0"
